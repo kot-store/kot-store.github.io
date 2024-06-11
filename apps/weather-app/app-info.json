@@ -1,0 +1,13 @@
+{
+    "name": "Weather App",
+    "version": "1.2.3",
+    "description": "A simple and lightweight text editor for your OS.",
+    "author": "kot-org",
+    "license": "MIT",
+    "installation_file": "https://kot-store.github.io/apps/weather-app/weather-app-1.2.3.tar",
+    "min_os_version": "1.0",
+    "dependencies": [
+      "libc"
+    ]
+  }
+  
