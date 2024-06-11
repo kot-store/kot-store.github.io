@@ -1,7 +1,7 @@
 {
-    "name": "Weather App",
+    "name": "weatherk",
     "version": "1.2.3",
-    "description": "A simple weather app",
+    "description": "A simple weather app made for Kot",
     "author": "kot-org",
     "license": "MIT",
     "installation_file": "https://kot-store.github.io/apps/weather-app/weather-app-1.2.3.tar",

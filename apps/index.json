@@ -1,9 +1,9 @@
 {
   "applications": [
     {
-      "name": "Weather App",
+      "name": "weatherk",
       "tags": ["weather", "forecast", "travel"],
-      "json_link": "https://kot-store.github.io/apps/weather-app/app-info.json"
+      "json_link": "https://kot-store.github.io/apps/weatherk/app-info.json"
     }
   ]
 }
