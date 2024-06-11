@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kot Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Kot Store</h1>
+  </header>
+
+  <main>
+    <section class="app-list">
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Copyright &copy; <span id="year"></span> Kot Store</p>
+  </footer>
+
+  <script>
+    function createElement(tag, attrs, content) {
+      const el = document.createElement(tag);
+      for (const attr in attrs) {
+        el.setAttribute(attr, attrs[attr]);
+      }
+      if (content) {
+        el.textContent = content;
+      }
+      return el;
+    }
+
+    function displayApp(app) {
+      const appDiv = createElement('div', { class: 'app-card' });
+
+      const nameH2 = createElement('h2', null, app.name);
+      appDiv.appendChild(nameH2);
+
+      const tagsP = createElement('p', { class: 'tags' });
+      appDiv.appendChild(tagsP);
+
+      const tagList = createElement('ul', null);
+      tagsP.appendChild(tagList);
+
+      for (const tag of app.tags) {
+        const tagLi = createElement('li', null, tag);
+        tagList.appendChild(tagLi);
+      }
+
+      const linkA = createElement('a', { href: app.json_link, target: '_blank' }, 'More Info');
+      appDiv.appendChild(linkA);
+
+      const appList = document.querySelector('.app-list');
+      appList.appendChild(appDiv);
+    }
+
+    async function loadApps() {
+      const response = await fetch('https://kot-store.github.io/apps/');
+      const json = await response.json();
+      for (const app of json.applications) {
+        displayApp(app);
+      }
+    }
+
+    loadApps();
+
+    const year = document.querySelector('#year');
+    year.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
