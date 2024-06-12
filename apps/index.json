@@ -2,6 +2,7 @@
   "applications": [
     {
       "name": "weatherk",
+      "description": "A simple weather app made for Kot",
       "tags": ["weather", "forecast", "travel"],
       "json_link": "https://kot-store.github.io/apps/weatherk/app-info.json"
     }
