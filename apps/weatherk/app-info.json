@@ -4,7 +4,7 @@
     "description": "A simple weather app made for Kot",
     "author": "kot-org",
     "license": "MIT",
-    "installation_file": "https://kot-store.github.io/apps/weatherk/weatherk-0-0-1.tar.gz",
+    "installation_file": "https://kot-store.github.io/apps/weatherk/weatherk-0-0-1.tar",
     "min_os_version": "1.0",
     "dependencies": [
       "/usr/lib/libc.so"
