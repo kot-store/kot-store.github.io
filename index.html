@@ -59,7 +59,7 @@
             const appDiv = createElement('div', { class: 'app-card' });
 
             const urlEmojiRequest = "https://api.emojisworld.fr/v1/search?limit=1&q=" + app.name;
-            const urlEmojiRequestResponse = await fetch(urlEmojiRequest);
+            const urlEmojiRequestResponse = fetch(urlEmojiRequest);
             const emoji = urlEmojiRequestResponse.results[0].emoji;
 
             const nameH2 = createElement('h2', null, emoji + app.name + emoji);
