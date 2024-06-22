@@ -6,6 +6,7 @@
     "license": "MIT",
     "app_info_url": "https://kot-store.github.io/apps/weather/app-info.json",
     "installation_file": "https://kot-store.github.io/apps/weather/weather-0-0-1.tar",
+    "executable_path": "weather",
     "min_os_version": "1.0",
     "dependencies": [
       "/usr/lib/libc.so"
