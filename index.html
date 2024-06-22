@@ -60,7 +60,7 @@
 
             const urlEmojiRequest = "https://api.emojisworld.fr/v1/search?limit=1&q=" + app.name;
             const urlEmojiRequestResponse = fetch(urlEmojiRequest);
-            const urlEmojiRequestResponseJson = urlEmojiRequestResponse.json();
+            const urlEmojiRequestResponseJson = JSON.parse(urlEmojiRequestResponse);
             const emoji = urlEmojiRequestResponseJson.results[0].emoji;
 
             const nameH2 = createElement('h2', null, emoji + app.name + emoji);
