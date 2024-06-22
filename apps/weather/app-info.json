@@ -1,11 +1,11 @@
 {
-    "name": "weatherk",
+    "name": "weather",
     "version": "0.0.2",
     "description": "A simple weather app made for Kot",
     "author": "kot-org",
     "license": "MIT",
-    "app_info_url": "https://kot-store.github.io/apps/weatherk/app-info.json",
-    "installation_file": "https://kot-store.github.io/apps/weatherk/weatherk-0-0-1.tar",
+    "app_info_url": "https://kot-store.github.io/apps/weather/app-info.json",
+    "installation_file": "https://kot-store.github.io/apps/weather/weather-0-0-1.tar",
     "min_os_version": "1.0",
     "dependencies": [
       "/usr/lib/libc.so"
