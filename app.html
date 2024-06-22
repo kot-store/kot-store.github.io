@@ -32,7 +32,7 @@
     </div>
 
   <main>
-    <section class="app-list">
+    <section class="app-info">
 
     </section>
   </main>
@@ -46,47 +46,37 @@
     <script>
         function createElement(tag, attrs, content){
             const el = document.createElement(tag);
-            for (const attr in attrs) {
+            for(const attr in attrs){
                 el.setAttribute(attr, attrs[attr]);
             }
-            if (content) {
+            if(content){
                 el.textContent = content;
             }
             return el;
         }
 
-        function displayApp(app){
-            const appDiv = createElement('div', { class: 'app-card' });
+        async function loadApps(){
+            const searchParams = new URLSearchParams(window.location.search);
+            if(searchParams.has('url')){
+                const appDiv = document.querySelector('.app-info');
 
-            const nameH2 = createElement('h2', null, app.name);
-            appDiv.appendChild(nameH2);
+                const response = await fetch(searchParams.get('url'));
+                const app = await response.json();
 
-            const descriptionP = createElement('p', null, app.description);
-            appDiv.appendChild(descriptionP);
+                const nameH2 = createElement('h2', null, app.name);
+                appDiv.appendChild(nameH2);
 
-            const tagsP = createElement('p', { class: 'tags' });
-            appDiv.appendChild(tagsP);
+                const descriptionP = createElement('p', null, app.description);
+                appDiv.appendChild(descriptionP);
 
-            const tagList = createElement('ul', null);
-            tagsP.appendChild(tagList);
+                const AuthorP = createElement('p', null, "Author : " + app.author);
+                appDiv.appendChild(AuthorP);
 
-            for(const tag of app.tags){
-                const tagLi = createElement('li', null, tag);
-                tagList.appendChild(tagLi);
-            }
+                const VersionP = createElement('p', null, "Current version : " + app.version);
+                appDiv.appendChild(VersionP);
 
-            const linkA = createElement('a', { href:  "app.html?url=" + encodeURIComponent(app.json_link) }, 'More Info');
-            appDiv.appendChild(linkA);
-
-            const appList = document.querySelector('.app-list');
-            appList.appendChild(appDiv);
-        }
-
-        async function loadApps() {
-            const response = await fetch('https://kot-store.github.io/apps/');
-            const json = await response.json();
-            for (const app of json.applications) {
-                displayApp(app);
+                const LicenseP = createElement('p', null, "License : " + app.license);
+                appDiv.appendChild(LicenseP);
             }
         }
 
