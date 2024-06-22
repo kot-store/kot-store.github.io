@@ -5,6 +5,24 @@
       "description": "A simple weather app made for Kot",
       "tags": ["weather", "forecast", "travel"],
       "json_link": "https://kot-store.github.io/apps/weather/app-info.json"
+    },
+    {
+      "name": "ip",
+      "description": "A simple ip app made for Kot",
+      "tags": ["ip", "internet"],
+      "json_link": "https://kot-store.github.io/apps/ip/app-info.json"
+    },
+    {
+      "name": "datetime",
+      "description": "A simple datetime app made for Kot",
+      "tags": ["date", "time", "travel"],
+      "json_link": "https://kot-store.github.io/apps/datetime/app-info.json"
+    },
+    {
+      "name": "llm",
+      "description": "A simple llm app made for Kot",
+      "tags": ["llm", "chat", "AI"],
+      "json_link": "https://kot-store.github.io/apps/llm/app-info.json"
     }
   ]
 }
