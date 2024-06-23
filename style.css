@@ -30,6 +30,10 @@
     width: 300px;
     transition: 0.3s;
     border-style: dashed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
 }
 
 .app-card:hover {
@@ -54,6 +58,7 @@
     text-align: center;
     text-decoration: none;
     transition: 0.3s;
+    width: 100%;
 }
 
 .app-card a:hover{
