@@ -3,6 +3,10 @@
     --accent-color: #696969;
 }
 
+.link{
+    cursor: pointer;
+}
+
 .center{
     display: flex;
     flex-wrap: wrap;
