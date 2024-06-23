@@ -3,12 +3,11 @@
     --accent-color: #696969;
 }
 
-.app-info{
-    border-radius: 10px;
-    margin: 20px;
-    padding: 20px;
-    width: 300px;
-    transition: 0.3s;
+.center{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 20px;
 }
 
 .app-list{
@@ -49,4 +48,8 @@
     transition: 0.3s;
 }
 
+.app-card a:hover{
+    color: #1f0606;
+    background-color: #a2a2a2;
+}
   

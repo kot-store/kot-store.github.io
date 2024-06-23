@@ -54,16 +54,30 @@
             }
             return el;
         }
+        
 
-        function displayApp(app){
+        async function getEmoji(default_emoji, request) {
+            emoji = default_emoji;
+            try{
+                const urlEmojiRequest = "https://api.emojisworld.fr/v1/search?limit=1&q=" + request;
+                const urlEmojiRequestResponse = await fetch(urlEmojiRequest);
+                const urlEmojiRequestResponseJson = await urlEmojiRequestResponse.json();
+                if (typeof urlEmojiRequestResponseJson.results[0] !== 'undefined') {
+                    emoji = urlEmojiRequestResponseJson.results[0].emoji;
+                }     
+            }catch(error){
+                console.error(error);
+            }
+
+            return emoji;
+        }
+
+        async function displayApp(app){
             const appDiv = createElement('div', { class: 'app-card' });
+            
+            const emoji = await getEmoji("💻", app.name);
 
-            const urlEmojiRequest = "https://api.emojisworld.fr/v1/search?limit=1&q=" + app.name;
-            const urlEmojiRequestResponse = fetch(urlEmojiRequest);
-            const urlEmojiRequestResponseJson = JSON.parse(urlEmojiRequestResponse);
-            const emoji = urlEmojiRequestResponseJson.results[0].emoji;
-
-            const nameH2 = createElement('h2', null, emoji + app.name + emoji);
+            const nameH2 = createElement('h2', null, emoji + " " + app.name + " " + emoji);
             appDiv.appendChild(nameH2);
 
             const descriptionP = createElement('p', null, app.description);
@@ -76,7 +90,8 @@
             tagsP.appendChild(tagList);
 
             for(const tag of app.tags){
-                const tagLi = createElement('li', null, tag);
+                const emoji_tag = await getEmoji("🏷️", tag);
+                const tagLi = createElement('li', null, emoji_tag + " " + tag);
                 tagList.appendChild(tagLi);
             }
 
@@ -90,7 +105,7 @@
         async function loadApps() {
             const response = await fetch('https://kot-store.github.io/apps/');
             const json = await response.json();
-            for (const app of json.applications) {
+            for(const app of json.applications){
                 displayApp(app);
             }
         }

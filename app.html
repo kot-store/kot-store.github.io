@@ -31,8 +31,8 @@
         </div>
     </div>
 
-  <main>
-    <section class="app-info">
+  <main class="center">
+    <section class="app-card">
 
     </section>
   </main>
@@ -55,15 +55,34 @@
             return el;
         }
 
+
+        async function getEmoji(default_emoji, request) {
+            emoji = default_emoji;
+            try{
+                const urlEmojiRequest = "https://api.emojisworld.fr/v1/search?limit=1&q=" + request;
+                const urlEmojiRequestResponse = await fetch(urlEmojiRequest);
+                const urlEmojiRequestResponseJson = await urlEmojiRequestResponse.json();
+                if (typeof urlEmojiRequestResponseJson.results[0] !== 'undefined') {
+                    emoji = urlEmojiRequestResponseJson.results[0].emoji;
+                }     
+            }catch(error){
+                console.error(error);
+            }
+
+            return emoji;
+        }
+
         async function loadApps(){
             const searchParams = new URLSearchParams(window.location.search);
             if(searchParams.has('url')){
-                const appDiv = document.querySelector('.app-info');
+                const appDiv = document.querySelector('.app-card');
 
                 const response = await fetch(searchParams.get('url'));
                 const app = await response.json();
 
-                const nameH2 = createElement('h2', null, app.name);
+                const emoji = await getEmoji("💻", app.name);
+
+                const nameH2 = createElement('h2', null, emoji + " " + app.name + " " + emoji);
                 appDiv.appendChild(nameH2);
 
                 const descriptionP = createElement('p', null, app.description);
@@ -77,6 +96,9 @@
 
                 const LicenseP = createElement('p', null, "License : " + app.license);
                 appDiv.appendChild(LicenseP);
+
+                const DownloadP = createElement('p', null, "Install : \nstore --install " + app.name);
+                appDiv.appendChild(DownloadP);
             }
         }
 
